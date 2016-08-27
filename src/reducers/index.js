@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import image from './imageReducer';
+import { reducer as formReducer } from 'redux-form';
 
 const rootReducer = combineReducers({
-  image
+
 });
 export default rootReducer;
 //we using the shorthand-property name in ES6
