@@ -1,11 +1,17 @@
 import React, {PropTypes} from 'react';
-import Header from '../common/Header.js';
+import {connect} from 'react-redux';
+import Navbar from '../common/Header';
 
 class App extends React.Component {
   render() {
+    const { dispatch, isAuthenticated, errorMessage } = this.props;
     return (
       <div className="container-fluid">
-        <Header/>
+        <Navbar
+          isAuthenticated={isAuthenticated}
+          errorMessage={errorMessage}
+          dispatch={dispatch}
+          />
         {this.props.children}
       </div>
     );
@@ -13,7 +19,19 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  children: PropTypes.object.isRequired
+  children: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.string
 };
 
-export default App;
+function mapStateToProps(state) {
+  const { auth } = state;
+  const { isAuthenticated, errorMessage } = auth;
+
+  return {
+    isAuthenticated,
+    errorMessage
+  };
+}
+export default connect(mapStateToProps)(App);
