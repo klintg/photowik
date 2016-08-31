@@ -1,5 +1,13 @@
 import { combineReducers } from 'redux';
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS } from '../actions/authActions';
+import {
+    LOGIN_REQUEST,
+    LOGIN_SUCCESS,
+    LOGIN_FAILURE,
+    LOGOUT_SUCCESS,
+    SIGNUP_REQUEST,
+    SIGNUP_SUCCESS,
+    SIGNUP_FAILURE
+    } from '../actions/authActions';
 
 //the starting state sets authentication based on a token
 //being in localstorage. in a real app we would also want a
@@ -23,6 +31,24 @@ export default function auth(state = {
         errorMessage: ''
       });
     case LOGIN_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isAuthenticated: false,
+        errorMessage: action.message
+      });
+    case SIGNUP_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true,
+        isAuthenticated: false,
+        user: action.creds
+      });
+    case SIGNUP_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isAuthenticated: true,
+        errorMessage: ''
+      });
+    case SIGNUP_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
         isAuthenticated: false,
