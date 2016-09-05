@@ -8,8 +8,7 @@ import Signup from './common/Signup';
 import RequireAuth from './components/require-authentication';
 
 export default (
-  <Route path="/" component={App}>
-    <IndexRoute component={Home}/>
+  <Route path="/" component={Home}>
     <Route path="home" component={RequireAuth(HomePage)}/>
     <Route path="signup" component={Signup}/>
     <Route path="*" component={NotFoundPage} />
