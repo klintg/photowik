@@ -10,6 +10,7 @@
     "bootstrap": "3.3.6",
     "crypto": "0.0.3",
     "express": "^4.14.0",
+    "fs": "0.0.1-security",
     "gm": "^1.23.0",
     "jimp": "^0.2.27",
     "jquery": "^2.2.3",
@@ -18,6 +19,8 @@
     "lodash": "^4.15.0",
     "mongoose": "^4.5.10",
     "morgan": "^1.7.0",
+    "node-uuid": "^1.4.7",
+    "os": "^0.1.1",
     "passport": "^0.3.2",
     "passport-jwt": "^2.1.0",
     "passport-local": "^1.0.0",
@@ -31,6 +34,7 @@
     "redux": "3.5.2",
     "redux-form": "^6.0.0-rc.3",
     "redux-thunk": "2.0.1",
+    "request": "^2.74.0",
     "toastr": "2.1.2"
   },
   "devDependencies": {

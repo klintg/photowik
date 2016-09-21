@@ -3,6 +3,11 @@ import webpack from 'webpack';
 import path from 'path';
 import config from '../webpack.config.dev';
 import open from 'open';
+import Jimp from 'jimp';
+import uuid from 'node-uuid';
+import os from 'os';
+import fs from 'fs';
+import request from 'request';
 
 /* eslint-disable no-console*/
 import logger from 'morgan';
@@ -41,6 +46,30 @@ app.get('*', function(req, res) {
 });
 
 router(app);
+
+let ImageUploader = require('./aws')
+app.post('/api/v1/image', function (req, res) {
+
+  let image = ImageUploader({
+    data_uri: req.body.data_uri,
+    filename: req.body.filename,
+    filetype: req.body.filetype
+  }).then(onGoodImageProcess, onBadImageProcess);
+
+  function onGoodImageProcess(resp) {
+    res.send({
+      status: 'success',
+      uri: resp
+    });
+  }
+
+  function onBadImageProcess(resp) {
+    res.send({
+      status: 'error'
+    });
+  }
+
+});
 
 app.listen(port, function(err) {
   if(err) {
