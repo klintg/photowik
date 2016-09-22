@@ -37,3 +37,4 @@ dist
 .DS_Store
 
 config.jsconfig.js
+config.js
