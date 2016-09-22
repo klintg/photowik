@@ -36,4 +36,4 @@ dist
 # Mac files
 .DS_Store
 
-config.js
+config.jsconfig.js
